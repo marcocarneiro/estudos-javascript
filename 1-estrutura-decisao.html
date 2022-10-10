@@ -79,7 +79,7 @@
     <script>
         var entrada = document.getElementById('entrada')
 
-        entrada.addEventListener('submit', ()=>{
+        entrada.addEventListener('submit', (e)=>{
             let nomeFilme = document.getElementById('filme').value
             let classificacao = document.getElementById('classificacao').value
 
@@ -88,6 +88,8 @@
             }else{
                 alert('Pode entrar Joãozinho')
             }
+
+            e.preventDefault()
         })
 
     </script>
