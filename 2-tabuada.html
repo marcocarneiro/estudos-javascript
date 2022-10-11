@@ -28,7 +28,7 @@
 <body>
     <main class="container d-flex flex-column align-items-center p-5">
 
-        <h1 class="m-2 text-center">Joãozinho vai ao cinema</h1>
+        <h1 class="m-2 text-center">Montador de tabuadas</h1>
 
         <!-- ENTRADA  -->
         <div class="card m-5">
@@ -36,20 +36,11 @@
                 <!-- insira os campos de formulário aqui -->
                 <form id="entrada">
                     <div class="mb-3">
-                      <label for="filme" class="form-label">Nome do Filme:</label>
-                      <input type="text"
-                        class="form-control" name="filme" id="filme" placeholder="Digite o nome do filme" value="">
+                        <label for="numero" class="form-label">Digite o número da tabuada</label>
+                        <input type="number" class="form-control" name="numero" id="numero">
                     </div>
-
-                    <div class="mb-3">
-                      <label for="classificacao" class="form-label">Digite a faixa etária:</label>
-                      <input type="number"
-                        class="form-control" name="classificacao" id="classificacao" placeholder="Idade">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Processar...</button>
+                    <button type="submit" class="btn btn-primary">Criar Tabuada</button>
                 </form>
-
             </div>
         </div>
 
@@ -59,10 +50,27 @@
         <div class="card m-5">
             <div class="card-body">
                 <!-- insira os elementos de saída aqui -->
-                <p id="resposta" class="text-center">
-                    Joãozinho pode assistir esse filme? <br>
-                    <span id="resposta-txt" class="fw-bold fs-1"></span>
-                </p>
+                <div id="resposta" class="p-4">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan="5">Tabuada do número 7</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="">
+                                    <td scope="row">7</td>
+                                    <td>X</td>
+                                    <td>1</td>
+                                    <td>=</td>
+                                    <td>7</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
             </div>
         </div>
 
@@ -81,20 +89,15 @@
     <!-- código javascript personalizado  -->
     <script>
         var entrada = document.getElementById('entrada')
+        entrada.addEventListener('submit', (e) => {
+            //laço de repetição para 10 etapas - tabuada até 10
+            let numero = document.getElementById('numero').value
+            for (let contador = 1; contador <= 10; contador++) {
+                console.log(`${numero} X ${contador} = ${numero * contador}`)                
+            }            
 
-        entrada.addEventListener('submit', (evt)=>{
-            let nomeFilme = document.getElementById('filme').value
-            let classificacao = document.getElementById('classificacao').value
-
-            if(classificacao >= 18){
-                document.getElementById('resposta-txt').innerText = 'você não pode ver esse filme'
-            }else{
-                document.getElementById('resposta-txt').innerText = 'Pode entrar Joãozinho'
-            }
-            //evita a atualização da página no evento submit
-            evt.preventDefault()
+            e.preventDefault()
         })
-
     </script>
 </body>
 
