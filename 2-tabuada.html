@@ -51,25 +51,7 @@
             <div class="card-body">
                 <!-- insira os elementos de saída aqui -->
                 <div id="resposta" class="p-4">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col" colspan="5">Tabuada do número 7</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="">
-                                    <td scope="row">7</td>
-                                    <td>X</td>
-                                    <td>1</td>
-                                    <td>=</td>
-                                    <td>7</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -88,13 +70,43 @@
 
     <!-- código javascript personalizado  -->
     <script>
+
         var entrada = document.getElementById('entrada')
+        
         entrada.addEventListener('submit', (e) => {
-            //laço de repetição para 10 etapas - tabuada até 10
-            let numero = document.getElementById('numero').value
-            for (let contador = 1; contador <= 10; contador++) {
-                console.log(`${numero} X ${contador} = ${numero * contador}`)                
-            }            
+            var numero = document.getElementById('numero').value
+            var tableStart = `
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="5">Tabuada do número ${numero}</th>
+                        </tr>
+                    </thead>
+                    <tbody>                    
+            `
+            var tableMiddle = ``
+            var tableEnd = `
+            </tbody>
+                </table>
+            </div>
+            `            
+
+            //laço de repetição para 10 etapas - tabuada até 10            
+            for (let contador = 1; contador <= 10; contador++) {               
+                tableMiddle += `
+                    <tr>
+                        <td> ${numero} </td>
+                        <td> X </td>
+                        <td> ${contador} </td>
+                        <td> = </td>
+                        <td> ${numero * contador} </td>
+                    </tr>
+                `
+            }
+
+            //Insere uma tabela dentro da div id="resposta"
+            document.getElementById('resposta').innerHTML = tableStart + tableMiddle + tableEnd
 
             e.preventDefault()
         })
