@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- ícones  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- regras CSS personalizadas -->
+    <style>
+        body {
+            background-color: #e2e2e2;
+        }
+    </style>
+
+</head>
+
+<body>
+    <main class="container d-flex flex-column align-items-center p-5">
+
+        <h1 class="m-2 text-center">CALCULADORA SIMPLES</h1>
+
+        <!-- ENTRADA  -->
+        <div class="card m-5">
+            <div class="card-body">
+                <!-- insira os campos de formulário aqui -->
+                <div class="mb-3">
+                  <label for="num1" class="form-label">Digite o primeiro número</label>
+                  <input type="number"
+                    class="form-control" name="num1" id="num1">
+                </div>
+
+                <div class="mb-3">
+                    <label for="num2" class="form-label">Digite o segundo número</label>
+                    <input type="number"
+                      class="form-control" name="num2" id="num2">
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary" id="adiciona"> + </button>
+                    <button class="btn btn-primary"  id="subtrai"> - </button>
+                    <button class="btn btn-primary"  id="multiplica"> &times; </button>
+                    <button class="btn btn-primary"  id="divide"> &divide; </button>
+                </div>                
+
+            </div>
+        </div>
+
+
+
+        <!-- SAÍDA  -->
+        <div class="card m-5">
+            <div class="card-body">
+                <!-- insira os elementos de saída aqui -->
+                <h1 id="resposta" class="text-center"></h1>
+            </div>
+        </div>
+
+    </main>
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+        </script>
+
+    <!-- código javascript personalizado  -->
+    <script>
+
+        //Função cálculo retorna o resultado da operação
+        const calculo = (operacao, num1, num2)=> {
+            let resultado = 0
+
+            switch (operacao) {
+                case "A":
+                    resultado = num1 + num2
+                    break;
+                case "S":
+                    resultado = num1 - num2
+                    break;
+                case "M":
+                    resultado = num1 * num2
+                    break;
+                case "D":
+                    resultado = num1 / num2
+                    break;
+            }
+
+            return resultado
+        }
+
+        //variáveis globais
+        var n1 = 0
+        var n2 = 0
+        var resposta = document.getElementById('resposta')
+
+        //eventos
+        document.getElementById('num1').addEventListener('change', (e)=>{
+            n1 = e.target.value
+        })
+        document.getElementById('num2').addEventListener('change', (e)=>{
+            n2 = e.target.value
+        })
+        
+        document.getElementById('adiciona').addEventListener('click', (e)=>{
+            resposta.innerText = calculo('A', Number(n1), Number(n2))
+        })
+
+    </script>
+</body>
+
+</html>
