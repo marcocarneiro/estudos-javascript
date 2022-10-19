@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- ícones  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- regras CSS personalizadas -->
+    <style>
+        body {
+            background-color: #e2e2e2;
+        }
+    </style>
+
+</head>
+
+<body>
+    <main class="container d-flex flex-column align-items-center p-5">
+
+        <h1 class="m-2 text-center">CARREGAMENTO CONTEÚDO DINÂMICO</h1>
+
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a id="link-cad" class="nav-link" href="#">Cadastro de usuário</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="link-edit" class="nav-link" href="#">Edição de usuário</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="link-reset" class="nav-link" href="#">Limpar Tela</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div id="recipiente" class="container mt-5"></div>        
+    </main>
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+        </script>
+
+    <!-- código javascript personalizado  -->
+    <script>
+        var divCad = `
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">CADASTRO DE USUÁRIO</h4>
+                <p class="card-text">Formulário</p>
+            </div>
+        </div>
+        `
+
+        var divEdit = `
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">EDIÇÃO DE USUÁRIO</h4>
+                <p class="card-text">Formulário</p>
+            </div>
+        </div>
+        `
+        //Os links #link-cad e #link-edit quando clicados
+        //deverão carregar
+        //os conteúdos das variáveis divCad e divEdit
+        //dentro da div #recipiente
+        document.getElementById('link-cad').addEventListener('click', (e)=>{
+            document.getElementById('recipiente').innerHTML = divCad
+            e.preventDefault()
+        })
+
+        document.getElementById('link-edit').addEventListener('click', (e)=>{
+            document.getElementById('recipiente').innerHTML = divEdit
+            e.preventDefault()
+        })
+
+        //recarregamento da página por javascript
+        document.getElementById('link-reset').addEventListener('click', ()=>{
+            document.location.reload(true)
+        })
+
+        
+    </script>
+</body>
+
+</html>
